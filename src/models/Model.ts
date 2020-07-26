@@ -27,7 +27,7 @@ export class Model<T extends HasId> {
     private sync: Sync<T>
   ) {}
 
-  // This shorthand syntax won't work if events/attributes are assigned inside consturctor method
+  // This shorthand syntax won't work if events/attributes are assigned inside consturctor method or inline initialization
   on = this.events.on;
   trigger = this.events.trigger;
   get = this.attributes.get;
