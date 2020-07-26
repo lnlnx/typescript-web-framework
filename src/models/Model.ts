@@ -34,7 +34,7 @@ export class Model<T extends HasId> {
 
   set(data: T): void {
     this.attributes.set(data);
-    this.events.trigger('changed');
+    this.events.trigger('change');
   }
 
   fetch() {
@@ -53,7 +53,7 @@ export class Model<T extends HasId> {
       .save(this.attributes.getAll())
       .then((response: AxiosResponse): void => {
         this.set(response.data);
-        this.trigger('saved');
+        this.trigger('save');
       })
       .catch(() => {
         this.trigger('error');
