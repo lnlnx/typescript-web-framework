@@ -10,7 +10,7 @@ export interface UserProp {
   name?: string;
 }
 
-const RootUrl = 'http://localhost:3000/users';
+export const RootUrl = 'http://localhost:3000/users';
 
 export class User extends Model<UserProp> {
   static build(attrs: UserProp): User {

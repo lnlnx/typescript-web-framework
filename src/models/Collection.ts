@@ -2,7 +2,7 @@ import { Eventing } from './Eventing';
 import Axios, { AxiosResponse } from 'axios';
 
 export class Collection<T, K> {
-  collections: T[] = [];
+  models: T[] = [];
   eventing: Eventing = new Eventing();
 
   constructor(public rootUrl: string, private deserialize: (json: K) => T) {}
@@ -18,7 +18,7 @@ export class Collection<T, K> {
   fetch() {
     Axios.get(this.rootUrl).then((response: AxiosResponse): void => {
       response.data.forEach((data: K) => {
-        this.collections.push(this.deserialize(data));
+        this.models.push(this.deserialize(data));
       });
       this.trigger('change');
     });
